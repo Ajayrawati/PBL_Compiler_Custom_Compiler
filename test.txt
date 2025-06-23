@@ -1,0 +1,10 @@
+int main() {
+    int x;
+    x = 7;
+    if (x > 5) {
+        print(x);  // prints 7
+    } else {
+        print(0);
+    }
+    return;
+}
