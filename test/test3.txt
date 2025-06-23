@@ -1,0 +1,10 @@
+num square(num n) {
+    giveback n * n;
+}
+
+num main() {
+    num result;
+    result = square(6);
+    reveal(result);  // should print 36
+    giveback;
+}

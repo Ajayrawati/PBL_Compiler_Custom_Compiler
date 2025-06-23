@@ -6,6 +6,6 @@
 
 void interpret_program(struct list* prog);
 int interpret_expr(AST* expr);
-int interpret_stmt(AST *stmt); // NOT void
+int interpret_stmt(AST *stmt); 
 
 #endif

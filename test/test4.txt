@@ -1,0 +1,13 @@
+num main() {
+    num i;
+    num sum; 
+    i = 0;
+    sum = 0;
+    loopwhile (i < 5) {
+        sum = sum + i;
+        reveal(sum);
+        i = i + 1;
+    }
+    reveal(sum);  // prrint 0+1+2+3+4 = 10
+    giveback;
+}

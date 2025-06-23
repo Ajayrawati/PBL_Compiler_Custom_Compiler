@@ -7,13 +7,13 @@
 
 %%
 
-"print"      { return PRINT; }
-"else"       { return ELSE; }
-"if"         { return IF; }
-"int"        { return INT; }
-"return"     { return RETURN; }
+"reveal"      { return PRINT; }
+"otherwise"       { return ELSE; }
+"when"         { return IF; }
+"num"        { return INT; }
+"giveback"     { return RETURN; }
 "void"       { return VOID; }
-"while"      { return WHILE; }
+"loopwhile"      { return WHILE; }
 
 "+"          { return ADD; }
 "-"          { return SUB; }

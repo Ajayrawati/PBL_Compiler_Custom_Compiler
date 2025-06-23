@@ -1,0 +1,8 @@
+num main() {
+    num arr[3];
+    arr[0] = 1;
+    arr[1] = 2;
+    arr[2] = arr[0] + arr[1];
+    reveal(arr[2]);  // prints 3
+    giveback;
+}

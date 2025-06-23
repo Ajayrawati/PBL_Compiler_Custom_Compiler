@@ -1,0 +1,13 @@
+num main() {
+    num i;
+    i = 0;
+
+    loopwhile (i < 5) {
+        when (i % 2 == 0) {
+            reveal(i);  // 0, 2, 4
+        }
+        i = i + 1;
+    }
+
+    giveback;
+}

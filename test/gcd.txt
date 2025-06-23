@@ -1,0 +1,18 @@
+num main() {
+    num a;
+    num b;
+    num temp;
+
+    a = 48;   // Try any two numbers
+    b = 18;
+
+    loopwhile (b != 0) {
+        temp = b;
+        b = a % b;
+        a = temp;
+    }
+
+    reveal(a);  // GCD is stored in a
+
+    giveback;
+}

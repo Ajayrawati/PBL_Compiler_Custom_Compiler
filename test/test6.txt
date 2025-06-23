@@ -1,0 +1,15 @@
+num main() {
+    num i;
+    num n;
+    n = 10;
+    i = 1;
+
+    loopwhile (i <= n) {
+        if (i % 2 != 0) {
+            reveal(i);
+        }
+        i = i + 1;
+    }
+
+    giveback;
+}

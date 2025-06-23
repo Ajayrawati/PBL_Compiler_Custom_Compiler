@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Create a symbol node with identifier name and associated AST
+// symbol node with identifier name and associated AST
 static struct symnode* make_symnode(char* name, struct AST* node) {
     struct symnode* temp = (struct symnode*)malloc(sizeof(struct symnode));
     if (!temp) {

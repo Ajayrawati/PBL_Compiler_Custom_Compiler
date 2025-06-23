@@ -1,0 +1,28 @@
+num main() {
+    num original;
+    num reversed;
+    num remainder;
+    num number;
+
+    original = 13321;       
+    number = original;    
+    reversed = 0;
+
+    loopwhile (number != 0) {
+        remainder = number % 10;
+        reversed = reversed * 10;
+        reversed = reversed + remainder;
+        number = number / 10;
+    }
+
+    when (original == reversed) {
+        reveal(original);   // Palindrome
+        reveal(1);          // 1 means true
+    }
+    otherwise {
+        reveal(original);   // Not a palindrome
+        reveal(0);          // 0 means false
+    }
+
+    giveback;
+}

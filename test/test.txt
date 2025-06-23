@@ -1,0 +1,10 @@
+num main() {
+    num x ;
+    x = 7;
+    when (x > 5) {
+        reveal(x);  // prints 7
+    } otherwise{
+        reveal(0);
+    }
+    giveback;
+}

@@ -1,0 +1,32 @@
+num main() {
+    num n;
+    num i;
+    num t1;
+    num t2;
+    num nextTerm;
+
+    // Set the number of Fibonacci terms
+    n = 10;
+
+    // Initialize first two terms
+    t1 = 0;
+    t2 = 1;
+
+    i = 1;
+
+    reveal(t1);  // Print first term
+    reveal(t2);  // Print second term
+
+    loopwhile (i <= n - 2) {
+        nextTerm = t1 + t2;
+        reveal(nextTerm);
+
+        // Update previous two terms
+        t1 = t2;
+        t2 = nextTerm;
+
+        i = i + 1;
+    }
+
+    giveback;
+}
