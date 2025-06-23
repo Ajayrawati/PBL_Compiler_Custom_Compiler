@@ -53,3 +53,15 @@ int main() {
 
     return;
 }
+
+
+## How to Execute 
+
+For Windows :
+
+bioson -d parser.y
+flex lexer.l
+gcc -o compiler lex.yy.c parser.tab.c ast_cons.c list.c symtab.c semant.c  pretty_print.c main.c interp.c utils.c
+Get-Content test/gcd.txt | ./compiler
+
+
