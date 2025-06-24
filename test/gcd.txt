@@ -3,7 +3,7 @@ num main() {
     num b;
     num temp;
 
-    a = 48;   // Try any two numbers
+    a = 48;   
     b = 18;
 
     loopwhile (b != 0) {
