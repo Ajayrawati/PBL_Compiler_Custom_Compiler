@@ -168,17 +168,3 @@ This compiler was built by **Ajay Singh** as part of a hands-on educational proj
 
 ---
 
-## 📬 Contact
-
-If you have any suggestions or questions, feel free to reach out to the author!
-
----
-
-Happy Compiling! 🛠️🎓
-
-```
-
----
-
-Let me know if you'd like this content saved into an actual `README.md` file automatically or need a `.pdf` version as well.
-```
