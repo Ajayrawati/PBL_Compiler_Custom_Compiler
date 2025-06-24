@@ -83,22 +83,40 @@ If your input is valid, the interpreter will evaluate the program and print resu
 ## ✍️ Sample Test Program
 
 ```c
-int sum(int a, int b) {
-    return a + b;
+Fibonacci Series Test code
+num main() {
+    num n;
+    num i;
+    num t1;
+    num t2;
+    num nextTerm;
+
+    // Set the number of Fibonacci terms
+    n = 10;
+
+    // Initialize first two terms
+    t1 = 0;
+    t2 = 1;
+
+    i = 1;
+
+    reveal(t1);  // Print first term
+    reveal(t2);  // Print second term
+
+    loopwhile (i <= n - 2) {
+        nextTerm = t1 + t2;
+        reveal(nextTerm);
+
+        // Update previous two terms
+        t1 = t2;
+        t2 = nextTerm;
+
+        i = i + 1;
+    }
+
+    giveback;
 }
 
-int main() {
-    int x;
-    int y;
-    int result;
-
-    x = 10;
-    y = 20;
-    result = sum(x, y);
-
-    print(result);  // Output: 30
-    return;
-}
 ```
 
 ---
