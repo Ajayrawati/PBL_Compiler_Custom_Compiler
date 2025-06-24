@@ -1,67 +1,184 @@
-# 🔧 Custom C-like Language Compiler
 
-This project implements a **compiler for a simplified C-like language**, supporting variables, arithmetic, control structures, functions, arrays, print statements, and basic interpretation. The compiler is built using **Flex**, **Bison**, and **C**.
+```markdown
+# 🧠 Custom  Compiler 
 
-## 🧠 Features
-
-- **Lexical Analysis** with Flex
-- **Parsing** using Bison (Yacc)
-- **AST Construction**
-- **Semantic Analysis**
-- **Scope-aware Symbol Table**
-- **Interpreter for execution**
-- **Support for:**
-  - Integer and string types
-  - Arithmetic and boolean expressions
-  - `if`, `else`, `while`, `return`, `print`
-  - Functions with parameters
-  - Arrays
-  - String literals and print formatting
+This project is a **miniature compiler** for a C-like programming language. It is designed for learning purposes and demonstrates key compiler phases: parsing, semantic analysis, AST construction, interpretation, and code execution.
 
 ---
 
-## 📂 Project Structure
+## 📦 Features
 
-| File              | Purpose                                          |
-|-------------------|--------------------------------------------------|
-| `lexer.l`         | Flex file: tokenizes the source code             |
-| `parser.y`        | Bison file: defines grammar rules and AST nodes  |
-| `ast.h/.c`        | AST node definitions and constructors            |
-| `symtab.h/.c`     | Symbol table with scoping support                |
-| `semant.h/.c`     | Semantic analysis: type checks, scope validation |
-| `interp.c`        | Interpreter: executes the program from AST       |
-| `utils.c`         | Helper functions                                 |
-| `main.c`          | Entry point: compiles and interprets input       |
-| `list.c`          | Linked list used for AST and argument lists      |
+### ✅ Language Features Supported:
+- **Data Types**: `int`, `void`
+- **Variables**: Declaration, assignment
+- **Functions**: User-defined with parameters and return values
+- **Control Flow**:
+  - `if`, `else`
+  - `while`
+  - `return`
+- **Operators**:
+  - Arithmetic: `+`, `-`, `*`, `/`, `%`
+  - Relational: `<`, `<=`, `>`, `>=`, `==`, `!=`
+- **I/O**:
+  - `print(...)` statement supporting integer expressions
 
 ---
 
-## ✅ Example Program
+## 📁 File Structure
+
+```
+
+.
+├── ast.h / ast\_cons.c        # AST structures and constructors
+├── interp.c / interp.h       # Interpreter (walks AST and executes logic)
+├── parser.y                  # Bison grammar (defines syntax rules)
+├── lexer.l                   # Flex lexer (token definitions)
+├── symtab.c / symtab.h       # Symbol table for scoping and declarations
+├── semant.c / semant.h       # Semantic analyzer (type checking, scoping)
+├── pretty\_print.c            # AST pretty-printer (optional)
+├── utils.c                   # Helper functions
+├── main.c                    # Compiler entry point
+├── list.c / list.h           # Singly linked list utilities
+├── test.txt                  # Sample test program
+└── README.md                 # This file
+
+````
+
+---
+
+## 🛠️ Building the Compiler
+
+Make sure you have `flex`, `bison`, and `gcc` installed.
+
+### Windows (PowerShell):
+```sh
+flex lexer.l
+bison -d parser.y
+gcc -o compiler lex.yy.c parser.tab.c ast_cons.c list.c symtab.c semant.c pretty_print.c main.c interp.c utils.c
+````
+
+### Linux/macOS:
+
+```sh
+flex lexer.l
+bison -d parser.y
+gcc -o compiler lex.yy.c parser.tab.c ast_cons.c list.c symtab.c semant.c pretty_print.c main.c interp.c utils.c
+```
+
+---
+
+## ▶️ Running the Compiler
+
+Compile and run a test input from a file using:
+
+```sh
+Get-Content test.txt | ./compiler     # Windows
+cat test.txt | ./compiler             # Linux/macOS
+```
+
+If your input is valid, the interpreter will evaluate the program and print results of `print(...)` calls.
+
+---
+
+## ✍️ Sample Test Program
 
 ```c
-int main() {
-    int i, n;
-    n = 10;
-    i = 1;
-
-    while (i <= n) {
-        if (i % 2 != 0) {
-            print(i);
-        }
-        i = i + 1;
-    }
-
-    return;
+int sum(int a, int b) {
+    return a + b;
 }
 
+int main() {
+    int x;
+    int y;
+    int result;
 
-## How to Execute 
+    x = 10;
+    y = 20;
+    result = sum(x, y);
 
-For Windows :
+    print(result);  // Output: 30
+    return;
+}
+```
 
-bioson -d parser.y
-flex lexer.l
-gcc -o compiler lex.yy.c parser.tab.c ast_cons.c list.c symtab.c semant.c  pretty_print.c main.c interp.c utils.c
-Get-Content test/gcd.txt | ./compiler
+---
 
+## 🧠 Interpreter Behavior
 
+* Functions are stored in a **global function registry**.
+* Variable environments use a **flat global scope** per function call.
+* On function call:
+
+  * Arguments are evaluated and bound to parameters.
+  * Old variable state is backed up and restored after the call.
+  * Return values are set using a special variable `__retval`.
+
+---
+
+## 🧪 Supported Tests
+
+| Feature    | Example                                        |
+| ---------- | ---------------------------------------------- |
+| Arithmetic | `x = 5 + 3 * 2;`                               |
+| Loop       | `while (x < 10) { x = x + 1; }`                |
+| Condition  | `if (x == y) { print(x); } else { print(y); }` |
+| Function   | `int add(int a, int b) { return a + b; }`      |
+| Print      | `print(x);`                                    |
+
+---
+
+## 🚫 Known Limitations
+
+* No support for:
+
+  * Strings in expressions (just as literals for `print`)
+  * Arrays (partial parsing only)
+  * Boolean or float types
+  * Recursion or nested functions
+* No full return propagation (currently, return values are globalized)
+* Variable scope is function-level only (no block scope nesting)
+
+---
+
+## 📌 Goals of the Project
+
+* Understand lexical analysis (Flex)
+* Learn grammar parsing (Bison/YACC)
+* Construct Abstract Syntax Trees (AST)
+* Perform semantic analysis (type checking, scoping)
+* Execute programs with an interpreter
+* Simulate symbol table management
+* Understand compiler phases hands-on
+
+---
+
+## 🙌 Credits
+
+This compiler was built by **Ajay Singh** as part of a hands-on educational project exploring language design, compiler construction, and AST-based interpretation.
+
+---
+
+## 🧩 Future Enhancements (Optional Ideas)
+
+* Support for string manipulation and input()
+* File I/O features
+* Real function return stack handling
+* Bytecode generation or LLVM backend
+* Optimization passes
+
+---
+
+## 📬 Contact
+
+If you have any suggestions or questions, feel free to reach out to the author!
+
+---
+
+Happy Compiling! 🛠️🎓
+
+```
+
+---
+
+Let me know if you'd like this content saved into an actual `README.md` file automatically or need a `.pdf` version as well.
+```
